@@ -2,6 +2,7 @@ package translation;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.List;
 
 
 // TODO Task D: Update the GUI for the program to align with UI shown in the README example.
@@ -13,15 +14,21 @@ public class GUI {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
+            CountryAndLanguagesLists lists = new CountryAndLanguagesLists();
+            List<String> countries = lists.getCountries();
+            List<String> languages = lists.getLanguages();
+
             JPanel countryPanel = new JPanel();
-            JList<String> countryField = new JList<>();
+            JList<String> countryField = new JList<>(countries.toArray(new String[0]));
             countryPanel.add(new JLabel("Country:"));
-            countryPanel.add(countryField);
+            countryField.setVisibleRowCount(5);
+            countryPanel.add(new JScrollPane(countryField));
 
             JPanel languagePanel = new JPanel();
-            JList<String> languageField = new JList<>();
+            JList<String> languageField = new JList<>(languages.toArray(new String[0]));
             languagePanel.add(new JLabel("Language:"));
-            languagePanel.add(languageField);
+            languageField.setVisibleRowCount(5);
+            languagePanel.add(new JScrollPane(languageField));
 
             JPanel buttonPanel = new JPanel();
             JButton submit = new JButton("Submit");
@@ -67,7 +74,7 @@ public class GUI {
             frame.setContentPane(mainPanel);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.pack();
-            frame.setSize(300, 200);
+            frame.setSize(500, 300);
             frame.setVisible(true);
 
 

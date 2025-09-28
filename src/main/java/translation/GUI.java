@@ -44,10 +44,10 @@ public class GUI {
             submit.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    CountryCodeConverter countryConverter = new CountryCodeConverter("country_codes.txt");
-                    LanguageCodeConverter languageConverter = new LanguageCodeConverter("language_codes.txt");
+                    CountryCodeConverter countryConverter = new CountryCodeConverter("country-codes.txt");
+                    LanguageCodeConverter languageConverter = new LanguageCodeConverter("language-codes.txt");
                     String language = languageConverter.fromLanguage(languageField.getSelectedValue());
-                    String country = countryConverter.fromCountry(countryField.getSelectedValue());
+                    String country = countryConverter.fromCountry(countryField.getSelectedValue()).toLowerCase();
 
                     // for now, just using our simple translator, but
                     // we'll need to use the real JSON version later.

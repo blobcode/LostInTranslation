@@ -61,7 +61,7 @@ public class JSONTranslator implements Translator {
                         String languageCode = key;
                         // Task C: record this translation in the appropriate instance variable
                         String translation = countryData.getString(languageCode);
-                        translations.put(countryCode + languageCode, translation);
+                        translations.put(countryCode + "-" + languageCode, translation);
                         if (!languageCodes.contains(languageCode)) {
                             languageCodes.add(languageCode);
                         }
@@ -92,6 +92,6 @@ public class JSONTranslator implements Translator {
     @Override
     public String translate(String countryCode, String languageCode) {
         // Task C: complete this method using your instance variables as needed
-        return translations.get(countryCode + languageCode);
+        return translations.get(countryCode + "-" + languageCode);
     }
 }
